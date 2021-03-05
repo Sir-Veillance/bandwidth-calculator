@@ -1,0 +1,16 @@
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\bin\Debug\net5.0\bandwidth-calculator.exe
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\bin\Debug\net5.0\bandwidth-calculator.deps.json
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\bin\Debug\net5.0\bandwidth-calculator.runtimeconfig.json
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\bin\Debug\net5.0\bandwidth-calculator.runtimeconfig.dev.json
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\bin\Debug\net5.0\bandwidth-calculator.dll
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\bin\Debug\net5.0\ref\bandwidth-calculator.dll
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\bin\Debug\net5.0\bandwidth-calculator.pdb
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.csprojAssemblyReference.cache
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.AssemblyInfoInputs.cache
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.AssemblyInfo.cs
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.csproj.CoreCompileInputs.cache
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.dll
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\ref\bandwidth-calculator.dll
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.pdb
+C:\Users\Rachael Rogan\Desktop\Capstone\bandwidth-calculator\obj\Debug\net5.0\bandwidth-calculator.genruntimeconfig.cache
