@@ -36,8 +36,9 @@ namespace bandwidth_calculator
                     Node firstNode = nodeList.Find(node => node.nodeId == int.Parse(parsedLine[0]));
                     Node secondNode = nodeList.Find(node => node.nodeId == int.Parse(parsedLine[1]));
                     int connectionBandwidth = int.Parse(parsedLine[2]);
-                    firstNode.addConnection(secondNode, connectionBandwidth, 0);
-                    secondNode.addConnection(firstNode, connectionBandwidth, 0);
+                    Connection connection = new Connection(firstNode, secondNode, connectionBandwidth, 0);
+                    firstNode.addConnection(connection);
+                    secondNode.addConnection(connection);
                 }
                 foreach (var node in nodeList){
                     Console.WriteLine(node);

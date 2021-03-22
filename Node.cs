@@ -4,18 +4,18 @@ using System.Collections.Generic;
 namespace bandwidth_calculator {
     class Node {
         private int _nodeId;
-        public List<(Node, int, int)> connections {get;}
+        public List<Connection> connections {get;}
         public Node(int id) {
             _nodeId = id;
-            connections = new List<(Node, int, int)>(); // (node, bandwidth, used)
+            connections = new List<Connection>(); // (node, bandwidth, used)
         }
         public int nodeId {
             get {
                 return _nodeId;
             }
         }
-        public void addConnection(Node newNode, int bandwidth, int used) {
-            connections.Add((newNode, bandwidth, used));
+        public void addConnection(Connection connection) {
+            connections.Add(connection);
         }
 
         // Look through the connection list of both nodes and return a list of shared nodes.
@@ -27,7 +27,7 @@ namespace bandwidth_calculator {
             string outString = new String("nodeId:" + nodeId);
             outString += "\nConnections:\n";
             foreach (var connection in connections) {
-                outString += "Node: " + connection.Item1.nodeId + " Bandwidth: " + connection.Item2 + " Used: " + connection.Item3 + "\n";
+                outString += "FirstNode: " + connection.firstNode.nodeId + " SecondNode: " + connection.secondNode.nodeId + " Bandwidth: " + connection.bandwidth+ " Used: " + connection.used + "\n";
             }
             return outString;
         }
@@ -36,6 +36,42 @@ namespace bandwidth_calculator {
         // Update the available_output from that Node.
         public int pullFromShared(List<Node> sharedNodes) {
             return 0;
+        }
+    }
+
+    class Connection {
+        private int _bandwidth;
+        private int _used;
+        private Node _firstNode;
+        private Node _secondNode;
+
+        public Connection(Node firstNode, Node secondNode, int bandwidth, int used) {
+            _firstNode = firstNode;
+            _secondNode = secondNode;
+            _bandwidth = bandwidth;
+            _used = used;
+        }
+        public Node firstNode{
+            get{
+                return _firstNode;
+            }
+        }
+        public Node secondNode{
+            get{
+                return _secondNode;
+            }
+        }
+
+        public int bandwidth{
+            get {
+                return _bandwidth;
+            }
+        }
+        
+        public int used{
+            get{
+                return _used;
+            }
         }
     }
 }
