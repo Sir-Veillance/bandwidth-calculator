@@ -7,7 +7,7 @@ namespace bandwidth_calculator {
         public List<Connection> connections {get;}
         public Node(int id) {
             _nodeId = id;
-            connections = new List<Connection>(); // (node, bandwidth, used)
+            connections = new List<Connection>(); // (node, bandwidth, remaining)
         }
         public int nodeId {
             get {
@@ -27,7 +27,7 @@ namespace bandwidth_calculator {
             string outString = new String("nodeId:" + nodeId);
             outString += "\nConnections:\n";
             foreach (var connection in connections) {
-                outString += "FirstNode: " + connection.firstNode.nodeId + " SecondNode: " + connection.secondNode.nodeId + " Bandwidth: " + connection.bandwidth+ " Used: " + connection.used + "\n";
+                outString += "FirstNode: " + connection.firstNode.nodeId + " SecondNode: " + connection.secondNode.nodeId + " Bandwidth: " + connection.bandwidth+ " Remaining: " + connection.remaining + "\n";
             }
             return outString;
         }
@@ -41,15 +41,15 @@ namespace bandwidth_calculator {
 
     class Connection {
         private int _bandwidth;
-        private int _used;
+        private int _remaining;
         private Node _firstNode;
         private Node _secondNode;
 
-        public Connection(Node firstNode, Node secondNode, int bandwidth, int used) {
+        public Connection(Node firstNode, Node secondNode, int bandwidth, int remaining) {
             _firstNode = firstNode;
             _secondNode = secondNode;
             _bandwidth = bandwidth;
-            _used = used;
+            _remaining = remaining;
         }
         public Node firstNode{
             get{
@@ -68,10 +68,31 @@ namespace bandwidth_calculator {
             }
         }
         
-        public int used{
-            get{
-                return _used;
+        public int remaining {
+            get {
+                return _remaining;
+            }
+            set {
+                _remaining = value;
             }
         }
+        
     }
 }
+
+
+/*
+            function(currentNode, connectionList, allPaths) {
+                for each connection in connectionList{
+                    if (currentNode == destination){
+                        connectionListCopy = connectionList
+                        allPaths.Add(connectionList)
+                        function(previousNode, connectionListCopy, allPaths)
+                    }
+                    if we haven't been to connection AND the connection lead to the source{
+                        add connection to connectionList
+                        function(go to node where connection points, connectionList, allPaths)
+                    }
+                }
+            }
+*/
