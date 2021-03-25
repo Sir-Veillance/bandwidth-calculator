@@ -2,16 +2,6 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-//using bandwidth_calculator.Node;
-
-/*
--Find every path from source to destination without cycles (not the same node twice in the path) A path is a list of connections
--Sort paths by length (same length paths are arbitrarily sorted)
--Send the maximum "bandwidth" from source to destination, and track leftover bandwidth at each connection
--Go through the paths in sorted order doing this, if a path does not have any leftover bandwidth at any of its connections, it is eliminated
--The maximum passed along a path is whatever the least bandwidth connection in the path is, this value is subtracted from the amount left in each connection
--Solution should be total amount of bandwidth that reached destination after going through every path/eliminating every path
-*/
 
 namespace bandwidth_calculator
 {
@@ -43,7 +33,7 @@ namespace bandwidth_calculator
                 }
 
                 // creating the paths
-                List<List<Connection>> allPaths = generateAllPaths(nodeList[0], 4);
+                List<List<Connection>> allPaths = generateAllPaths(nodeList[0], destinationID);
                 // calculate bandwidth
                 IOrderedEnumerable<List<Connection>> orderedPaths = allPaths.OrderBy(path => path.Count);
                 int bandwidth = 0;
@@ -60,35 +50,21 @@ namespace bandwidth_calculator
                         connection.remaining = connection.remaining - maxSend;
                     }
                 }
-                Console.WriteLine(bandwidth);
+                Console.WriteLine("Bandwidth for " + filename + " is: " + bandwidth);
             } else {
                 Console.WriteLine("Invalid filename...");
             }
-
-            // path generation
-            
-        }
-
-        public static void createPaths(List<List<Connection>> connectionList) {
-            // check to see if the connection is already in path
-            // check to see if the connection leads to the destination (then you are finished)
-            
         }
 
         public static List<List<Connection>> generateAllPaths (Node sourceNode, int destinationId) {
             var allConnections = new List<List<Connection>>();
             var nodesInPath = new List<int>();
-            // foreach (var connection in sourceNode.connections) {
-            //     var workingPath = new List<Connection>();
-            //     workingPath.Add(connection);
-            //     generateAllPathsInner(sourceNode, destinationId, nodesInPath, workingPath, allConnections);
-            // }
             var workingPath = new List<Connection>();
             generateAllPathsInner(sourceNode, destinationId, nodesInPath, workingPath, allConnections);
             return allConnections;
         }
 
-        public static void generateAllPathsInner (Node currentNode, int destinationId, List<int> nodesInPath, List<Connection> workingPath, List<List<Connection>> allConnections) {
+        private static void generateAllPathsInner (Node currentNode, int destinationId, List<int> nodesInPath, List<Connection> workingPath, List<List<Connection>> allConnections) {
             if (currentNode.nodeId == destinationId) {
                 var appendList = new List<Connection>();
                 foreach (var connection in workingPath) {
@@ -119,47 +95,5 @@ namespace bandwidth_calculator
             }
             nodesInPath.Remove(currentNode.nodeId);
         }
-
-        /*
-            function(currentNode, connectionList, allPaths) {
-                for each connection in connectionList{
-                    if (currentNode == destination){
-                        allPaths.Add(connectionList)
-                        // return connectionList
-                    }
-                    if we haven't been to connection AND the connection lead to the source{
-                        add connection to connectionList
-                        function(go to node where connection points, connectionList, allPaths)
-                    }
-                }
-            }
-            
-            generatePaths (int sourceNode, int destinationNode, List<Connection> workingPath) {
-                source = get from nodeList where nodeId == sourceNode;
-
-                foreach (connection in source.connections) {
-                    if (connection.firstNode.nodeID == source.nodeID) {
-                        if (connection.secondNode.nodeID == destinationNode) {
-                            workingPath = workingPath.Add(connection);
-                            return workingPath;
-                        } else {
-                            workingPath = workingPath.Add(connection);
-                            generatePaths(secondNode.nodeID, destinationNode, workingPath);
-                        }
-                    else {
-                        if (connection.firstNode.nodeID == destinationNode) {
-                            workingPath = workingPath.Add(connection);
-                            return workingPath;
-                        } else {
-                            workingPath = workingPath.Add(connection);
-                            generatePaths(firstNode.nodeID, destinationNode, workingPath);
-                        }
-                    }
-                    
-                    }
-                }
-            }
-        */
-
     }
 }
